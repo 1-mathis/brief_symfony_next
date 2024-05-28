@@ -37,6 +37,15 @@ class TraficTicket
     #[ORM\ManyToOne(inversedBy: 'trafic_ticket')]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?bool $paid = null;
+
+    #[ORM\Column]
+    private ?float $amount = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $pattern = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +131,42 @@ class TraficTicket
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function isPaid(): ?bool
+    {
+        return $this->paid;
+    }
+
+    public function setPaid(bool $paid): static
+    {
+        $this->paid = $paid;
+
+        return $this;
+    }
+
+    public function getAmount(): ?float
+    {
+        return $this->amount;
+    }
+
+    public function setAmount(float $amount): static
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    public function getPattern(): ?string
+    {
+        return $this->pattern;
+    }
+
+    public function setPattern(string $pattern): static
+    {
+        $this->pattern = $pattern;
 
         return $this;
     }
