@@ -1,10 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   return (
     <>
-     <h1>Mathis</h1>
+    <header>
+      <Navbar />
+    </header>
     </>
   );
 }
