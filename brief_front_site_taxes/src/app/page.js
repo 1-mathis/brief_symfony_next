@@ -1,13 +1,15 @@
+"use client"
+
 import Image from "next/image";
 import styles from "./page.module.css";
-import Navbar from "@/components/Navbar/Navbar";
+import Link from "next/link.js";
+import { Component } from "react";
 
 export default function Home() {
   return (
     <>
-    <header>
-      <Navbar />
-    </header>
+      <body>
+      </body>
     </>
   );
 }
