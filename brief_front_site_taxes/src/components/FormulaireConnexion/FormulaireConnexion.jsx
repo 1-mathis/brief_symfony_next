@@ -1,46 +1,29 @@
-import React, { useState } from 'react';
+"use client"
 
-const LoginForm = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+import "./formulaireConnexion.css";
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Ajoutez la logique de gestion de la soumission du formulaire ici
-        console.log('Email:', email);
-        console.log('Password:', password);
-    };
-
+export default function FormulaireConnexion() {
     return (
-        <div className="container">
-            <h2 className="my-4">Formulaire de Connexion</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="email" className="form-label">Adresse mail</label>
-                    <input 
-                        type="email" 
-                        className="form-control" 
-                        id="email" 
-                        placeholder="Entrez votre adresse mail"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Mot de passe</label>
-                    <input 
-                        type="password" 
-                        className="form-control" 
-                        id="password" 
-                        placeholder="Entrez votre mot de passe"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary">Connexion</button>
-            </form>
-        </div>
+        <>
+ <div class="container mt-5">
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Votre adresse e-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre email avec quelqu'un d'autre.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Votre mot de passe :</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" />
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                <label class="form-check-label" for="exampleCheck1">Rester connecté</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        </>
     );
-};
-
-export default LoginForm;
+}

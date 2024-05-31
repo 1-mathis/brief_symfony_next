@@ -13,32 +13,27 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-
 #[ApiResource(
     operations: [
-    new Post()
+        new Post(),
     ]
-   )]
-
-   class User implements UserInterface, PasswordAuthenticatedUserInterface
+)]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
     /**
-     * @var list<string> The user roles
+     * @var string[]
      */
     #[ORM\Column]
     private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
 
@@ -49,23 +44,23 @@ use Symfony\Component\Security\Core\User\UserInterface;
     private ?string $surname = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $adress = null;
+    private ?string $address = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updated_at = null;
+    private ?\DateTimeImmutable $updatedAt = null;
 
     /**
      * @var Collection<int, TraficTicket>
      */
     #[ORM\OneToMany(targetEntity: TraficTicket::class, mappedBy: 'user')]
-    private Collection $trafic_ticket;
+    private Collection $traficTickets;
 
     public function __construct()
     {
-        $this->trafic_ticket = new ArrayCollection();
+        $this->traficTickets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -81,25 +76,14 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
     }
 
-    /**
-     * @see UserInterface
-     *
-     * @return list<string>
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
@@ -109,19 +93,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
     public function getPassword(): string
     {
         return $this->password;
@@ -130,13 +107,9 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
-    /**
-     * @see UserInterface
-     */
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
@@ -151,7 +124,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function setName(string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -163,58 +135,54 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function setSurname(string $surname): static
     {
         $this->surname = $surname;
-
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): static
+    public function setAddress(string $address): static
     {
-        $this->adress = $adress;
-
+        $this->address = $address;
         return $this;
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
-        $this->created_at = $created_at;
-
+        $this->createdAt = $createdAt;
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updated_at): static
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
-        $this->updated_at = $updated_at;
-
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 
     /**
      * @return Collection<int, TraficTicket>
      */
-    public function getTraficTicket(): Collection
+    public function getTraficTickets(): Collection
     {
-        return $this->trafic_ticket;
+        return $this->traficTickets;
     }
 
     public function addTraficTicket(TraficTicket $traficTicket): static
     {
-        if (!$this->trafic_ticket->contains($traficTicket)) {
-            $this->trafic_ticket->add($traficTicket);
+        if (!$this->traficTickets->contains($traficTicket)) {
+            $this->traficTickets->add($traficTicket);
             $traficTicket->setUser($this);
         }
 
@@ -223,7 +191,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
     public function removeTraficTicket(TraficTicket $traficTicket): static
     {
-        if ($this->trafic_ticket->removeElement($traficTicket)) {
+        if ($this->traficTickets->removeElement($traficTicket)) {
             // set the owning side to null (unless already changed)
             if ($traficTicket->getUser() === $this) {
                 $traficTicket->setUser(null);
