@@ -1,5 +1,5 @@
 "use server";
-export async function getPopularMovies() {
+export async function getUsers() {
   const res = await fetch(
     `127.0.0.1:8000/api/users_key=${process.env.NEXT_PUBLIC_API_KEY}`
   );

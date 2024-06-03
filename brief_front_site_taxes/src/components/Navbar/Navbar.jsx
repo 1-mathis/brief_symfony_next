@@ -1,21 +1,37 @@
 "use client";
 
+import Link from "next/link.js";
 import "./navbar.css";
 
 export default function Navbar() {
   return (
     <>
-<link
+      <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-      />    
-    <header>
-      <div class="logo-name-search-bar">
-        <div class="logo-name">
-          <h1>Titre</h1>
+      />
+      <header>
+        <div className="logo-name-search-bar">
+          <div className="logo-name">
+            <h1></h1>
+          </div>
+
+          <div className="search-bar">
+            <input
+              type="search"
+              name="searchBar"
+              id="searchBar"
+              placeholder="Rechercher..."
+            />
+          </div>
         </div>
 
-        <div class="search-bar">
+        <div className="logo-name">
+          <img src="../../public/logo.png" alt="logo du site" />
+          <h1>PayUrTaxes !</h1>
+        </div>
+
+        <div className="search-bar">
           <input
             type="search"
             name="searchBar"
@@ -23,63 +39,32 @@ export default function Navbar() {
             placeholder="Rechercher..."
           />
         </div>
-      </div>
 
-      <div class="logo-name">
-        <img src="/logo.png" alt="logo de Chuan" />
-        <h1>Titre</h1>
-      </div>
+        <nav className="nav-pas-response" id="nav-pas-response">
+          <Link href="">Accueil</Link>
+          <Link href="">Payer une amende</Link>
+          <Link href="">Me connecter</Link>
+          <Link href="">Me déconnecter</Link>
+          <Link href="">Mon profil</Link>
+        </nav>
 
-      <div class="search-bar">
-        <input
-          type="search"
-          name="searchBar"
-          id="searchBar"
-          placeholder="Rechercher..."
-        />
-      </div>
+        <nav className="nav-response" id="nav-bar">
+          <span className="material-symbols-outlined" data-hover="Home">home</span>
+          <div id="home-text" className="hover-text">Accueil</div>
 
-      <nav class="nav-pas-response" id="nav-pas-response">
-        <a href="#accueil">Accueil</a>
-        <a href="#consultations">lien 2</a>
-        <a href="#description">lien 3</a>
-        <a href="#carte">Lien 4</a>
-        <a href="#contact">Lien 5</a>
-        <a href="#connection">Lien 6</a>
-      </nav>
+          <span className="material-symbols-outlined" data-hover="Login">payments</span>
+          <div id="login-text" className="hover-text">payer une amende</div>
 
-      <nav class="nav-response" id="nav-bar">
-        <span class="material-symbols-outlined" data-hover="Home">captive_portal</span>
-        <div id="home-text" class="hover-text">Lien 1</div>
+          <span className="material-symbols-outlined" data-hover="Groups">login</span>
+          <div id="groups-text" className="hover-text">me connecter</div>
 
-        <span class="material-symbols-outlined" data-hover="Login">
-          captive_portal
-        </span>
-        <div id="login-text" class="hover-text">Lien 2</div>
+          <span className="material-symbols-outlined" data-hover="Credit Card">logout</span>
+          <div id="credit-card-text" className="hover-text">me déconnecter</div>
 
-        <span class="material-symbols-outlined" data-hover="Groups">
-          captive_portal
-        </span>
-        <div id="groups-text" class="hover-text">Lien 3</div>
-
-        <span class="material-symbols-outlined" data-hover="Credit Card">
-          captive_portal
-        </span>
-        <div id="credit-card-text" class="hover-text">
-          Lien 4
-        </div>
-
-        <span class="material-symbols-outlined" data-hover="Contact Mail">
-          captive_portal
-        </span>
-        <div id="contact-mail-text" class="hover-text">Lien 5</div>
-
-        <span class="material-symbols-outlined" data-hover="Login">
-          captive_portal
-        </span>
-        <div id="login2-text" class="hover-text">Lien 6</div>
-      </nav>
-    </header>
+          <span className="material-symbols-outlined" data-hover="Login">person</span>
+          <div id="login2-text" className="hover-text">mon profil</div>
+        </nav>
+      </header>
     </>
   );
 }
