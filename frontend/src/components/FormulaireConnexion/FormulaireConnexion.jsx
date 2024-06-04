@@ -22,6 +22,7 @@ export default function FormulaireConnexion() {
             </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
+        <p className="btn mt-5">je n'ai pas de compte</p>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         </>

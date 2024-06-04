@@ -2,6 +2,8 @@
 
 import Link from "next/link.js";
 import "./navbar.css";
+// import SearchBar from "../Search/Search.jsx";
+
 
 export default function Navbar() {
   return (
@@ -38,10 +40,12 @@ export default function Navbar() {
             id="searchBar"
             placeholder="Rechercher..."
           />
+
+          {/* <SearchBar /> */}
         </div>
 
         <nav className="nav-pas-response" id="nav-pas-response">
-          <Link href="">Accueil</Link>
+          <Link href="/">Accueil</Link>
           <Link href="">Payer une amende</Link>
           <Link href="">Me connecter</Link>
           <Link href="">Me déconnecter</Link>
