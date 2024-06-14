@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Delete;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,6 +18,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ApiResource(
     operations: [
         new Post(),
+        new Get(),
+        new Delete()
     ]
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface

@@ -23,13 +23,12 @@ export default function Navbar() {
               type="search"
               name="searchBar"
               id="searchBar"
-              placeholder="Rechercher..."
+              placeholder="n° d'amende (ex: 123)"
             />
           </div>
         </div>
 
         <div className="logo-name">
-          <img src="../../public/logo.png" alt="logo du site" />
           <h1>PayUrTaxes !</h1>
         </div>
 
@@ -38,7 +37,7 @@ export default function Navbar() {
             type="search"
             name="searchBar"
             id="searchBar"
-            placeholder="Rechercher..."
+            placeholder="n° d'amende (ex: 123)"
           />
 
           {/* <SearchBar /> */}
